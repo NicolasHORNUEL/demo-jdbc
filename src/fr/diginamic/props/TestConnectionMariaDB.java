@@ -3,6 +3,7 @@ package fr.diginamic.props;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class TestConnectionMariaDB {
@@ -25,6 +26,8 @@ public class TestConnectionMariaDB {
 		try {
 			// ETAPE2 : je demande au driverManager de me fournir une connexion à une base de type mariaDB
 			Connection connection = DriverManager.getConnection(url, user, password);
+			Statement statement = connection.createStatement();
+			statement.executeUpdate("INSERT INTO genre (nom_genre) VALUES ('Fantastique')");
 			System.out.println(connection.isClosed());
 			connection.close();
 			System.out.println(connection.isClosed());			

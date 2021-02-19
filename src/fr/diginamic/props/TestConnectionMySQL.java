@@ -25,13 +25,16 @@ public class TestConnectionMySQL {
 		try {
 			// ETAPE2 : je demande au driverManager de me fournir une connexion à une base de type MySQL
 			Connection connection = DriverManager.getConnection(url, user, password);
-			System.out.println(connection.isClosed());
 			connection.close();
-			System.out.println(connection.isClosed());	
+			System.out.println(connection.isClosed());
+			
 		} catch (SQLException e) {
-			System.out.println("impossible de se connecter à la base de données: " + e.getMessage());
+			if (e.getErrorCode() == 1045 ) {
+				System.out.println("impossible de se connecter à la base de données: " + e.getMessage());
+			} else {
+				System.out.println("Pb de requête: " + e.getMessage());
+			}
 		}
-		
 
 	}
 
