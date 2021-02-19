@@ -7,8 +7,8 @@ public class TestConfiguration {
 
 	public static void main(String[] args) {
 		
-		ResourceBundle monFichierConf = ResourceBundle.getBundle("database");
-		String driverName = monFichierConf.getString("database.driver");
+		ResourceBundle monFichierConf = ResourceBundle.getBundle("mySQL");
+		String driverName = monFichierConf.getString("mySQL.driver");
 		
 		System.out.println(driverName);
 
